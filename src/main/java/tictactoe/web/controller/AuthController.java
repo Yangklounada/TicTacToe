@@ -1,6 +1,7 @@
 package tictactoe.web.controller;
 
 import tictactoe.domain.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,25 +22,25 @@ public class AuthController {
     }
 
     @PostMapping("register")
-    public ResponseEntity<UUID> register(@RequestBody SignUpRequest request) {
+    public ResponseEntity<UUID> register(@Valid @RequestBody SignUpRequest request) {
         UUID userId = authService.register(request);
         return ResponseEntity.ok(userId);
     }
 
     @PostMapping("login")
-    public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request) {
+    public ResponseEntity<JwtResponse> login(@Valid @RequestBody JwtRequest request) {
         JwtResponse response = authService.authorize(request);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("token/access")
-    public ResponseEntity<JwtResponse> getNewAccessToken(@RequestBody RefreshJwtRequest request) {
+    public ResponseEntity<JwtResponse> getNewAccessToken(@Valid @RequestBody RefreshJwtRequest request) {
         JwtResponse response = authService.getAccessToken(request.getRefreshToken());
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("token/refresh")
-    public ResponseEntity<JwtResponse> getNewRefreshToken(@RequestBody RefreshJwtRequest request) {
+    public ResponseEntity<JwtResponse> getNewRefreshToken(@Valid @RequestBody RefreshJwtRequest request) {
         JwtResponse response = authService.refreshToken(request.getRefreshToken());
         return ResponseEntity.ok(response);
     }

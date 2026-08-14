@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: tictactoe
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dev-password}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U app -d tictactoe" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - pgdata:/var/lib/postgresql
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/tictactoe
+      DB_USERNAME: app
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-dev-password}
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-dev-only-access-secret-which-is-at-least-32-bytes-long}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev-only-refresh-secret-which-is-at-least-32-bytes-long}
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

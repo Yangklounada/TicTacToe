@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import tictactoe.web.mapper.GameMapper;
 import tictactoe.domain.model.Game;
 import tictactoe.domain.service.GameService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tictactoe.web.model.GameDto;
@@ -59,7 +60,7 @@ public class GameController {
     @PostMapping("/{uuid}")
     public ResponseEntity<GameDto> makeMove(
             @PathVariable UUID uuid,
-            @RequestBody GameDto gameDto) {
+            @Valid @RequestBody GameDto gameDto) {
 
         if (!uuid.equals(gameDto.getId())) {
             throw new IllegalArgumentException("UUID mismatch: path=" + uuid + ", body=" + gameDto.getId());

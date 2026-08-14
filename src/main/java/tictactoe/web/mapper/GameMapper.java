@@ -1,6 +1,7 @@
 package tictactoe.web.mapper;
 
 import tictactoe.domain.model.Board;
+import tictactoe.domain.model.Cell;
 import tictactoe.domain.model.Game;
 import tictactoe.web.model.BoardDto;
 import tictactoe.web.model.GameDto;
@@ -9,22 +10,24 @@ public class GameMapper {
 
     public static Game toDomain(GameDto dto) {
         int[][] grid = dto.getBoard().getGrid();
-        int[][] copy = new int[3][3];
+        Cell[][] cells = new Cell[3][3];
         for (int i = 0; i < 3; i++)
-            System.arraycopy(grid[i], 0, copy[i], 0, 3);
+            for (int j = 0; j < 3; j++)
+                cells[i][j] = Cell.fromValue(grid[i][j]);
 
-        Board board = new Board(copy);
+        Board board = new Board(cells);
         return new Game(dto.getId(), board,
                 dto.getStatus(), dto.getPlayerXId(), dto.getPlayerOId(),
                 dto.getCurrentTurnId(), dto.getWinnerId(), dto.getCreatedAt());
     }
 
     public static GameDto toDto(Game game) {
-        int[][] grid = game.getBoard().getGrid();
+        Cell[][] grid = game.getBoard().getGrid();
 
         int[][] copy = new int[3][3];
         for (int i = 0; i < 3; i++)
-            System.arraycopy(grid[i], 0, copy[i], 0, 3);
+            for (int j = 0; j < 3; j++)
+                copy[i][j] = grid[i][j].toValue();
 
         BoardDto boardDto = new BoardDto();
         boardDto.setGrid(copy);

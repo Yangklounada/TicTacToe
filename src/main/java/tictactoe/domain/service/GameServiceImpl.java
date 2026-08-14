@@ -5,6 +5,7 @@ import tictactoe.datasource.repository.GameRepository;
 import tictactoe.domain.exception.GameNotFoundException;
 import tictactoe.domain.exception.IllegalMoveException;
 import tictactoe.domain.model.Board;
+import tictactoe.domain.model.Cell;
 import tictactoe.domain.model.Game;
 import tictactoe.domain.model.GameStatus;
 import tictactoe.domain.model.WinsRatio;
@@ -15,11 +16,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class GameServiceImpl implements GameService{
-    final int EMPTY = 0;
-    final int PLAYER = 1;
-    final int COMPUTER = 2;
-
+public class GameServiceImpl implements GameService {
     private final GameRepository gameRepository;
 
     public GameServiceImpl(GameRepository gameRepository) {
@@ -36,7 +33,7 @@ public class GameServiceImpl implements GameService{
             return game;
         }
         Board newBoard = board.copyBoard();
-        newBoard.setCell(bestMove[0], bestMove[1], COMPUTER);
+        newBoard.setCell(bestMove[0], bestMove[1], Cell.O);
         return new Game(game.getId(), newBoard, game.getStatus(), game.getPlayerXId(), null, game.getCurrentTurnId(), game.getWinnerId(), game.getCreatedAt());
     }
 
@@ -44,11 +41,11 @@ public class GameServiceImpl implements GameService{
         Board original = originalGame.getBoard();
         Board updated = updatedGame.getBoard();
 
-        int expectedToken;
+        Cell expectedToken;
         if (playerId.equals(originalGame.getPlayerXId())) {
-            expectedToken = PLAYER;
+            expectedToken = Cell.X;
         } else if (playerId.equals(originalGame.getPlayerOId())) {
-            expectedToken = COMPUTER;
+            expectedToken = Cell.O;
         } else {
             return false;
         }
@@ -56,7 +53,7 @@ public class GameServiceImpl implements GameService{
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (original.getCell(i, j) != updated.getCell(i, j)) {
-                    if (original.getCell(i, j) != EMPTY) return false;
+                    if (original.getCell(i, j) != Cell.EMPTY) return false;
                     if (updated.getCell(i, j) != expectedToken) return false;
                     changedCells++;
                 }
@@ -154,10 +151,10 @@ public class GameServiceImpl implements GameService{
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (board.getCell(i, j) == EMPTY) {
-                    board.setCell(i, j, COMPUTER);
+                if (board.getCell(i, j) == Cell.EMPTY) {
+                    board.setCell(i, j, Cell.O);
                     int score = miniMax(board, 0, false);
-                    board.setCell(i, j, EMPTY);
+                    board.setCell(i, j, Cell.EMPTY);
                     if (score > bestScore) {
                         bestScore = score;
                         bestMove = new int[]{i, j};
@@ -170,20 +167,20 @@ public class GameServiceImpl implements GameService{
 
     private int miniMax(Board board, int depth, boolean isMaximizing) {
 
-        int result = checkWinner(board);
+        Cell result = checkWinner(board);
 
-        if (result == COMPUTER) return 10 - depth;
-        if (result == PLAYER) return depth - 10;
+        if (result == Cell.O) return 10 - depth;
+        if (result == Cell.X) return depth - 10;
         if (!isMoveLeft(board)) return 0;
 
         if (isMaximizing) {
             int bestScore = -1;
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    if (board.getCell(i, j) == EMPTY) {
-                        board.setCell(i, j, COMPUTER);
+                    if (board.getCell(i, j) == Cell.EMPTY) {
+                        board.setCell(i, j, Cell.O);
                         int score = miniMax(board, depth + 1, false);
-                        board.setCell(i, j, EMPTY);
+                        board.setCell(i, j, Cell.EMPTY);
                         bestScore = Math.max(score, bestScore);
                     }
                 }
@@ -193,10 +190,10 @@ public class GameServiceImpl implements GameService{
             int bestScore = Integer.MAX_VALUE;
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    if (board.getCell(i, j) == EMPTY) {
-                        board.setCell(i, j, PLAYER);
+                    if (board.getCell(i, j) == Cell.EMPTY) {
+                        board.setCell(i, j, Cell.X);
                         int score = miniMax(board, depth + 1, true);
-                        board.setCell(i, j, EMPTY);
+                        board.setCell(i, j, Cell.EMPTY);
                         bestScore = Math.min(score, bestScore);
                     }
                 }
@@ -209,7 +206,7 @@ public class GameServiceImpl implements GameService{
     private boolean isMoveLeft(Board board) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (board.getCell(i, j) == EMPTY) {
+                if (board.getCell(i, j) == Cell.EMPTY) {
                     return true;
                 }
             }
@@ -218,37 +215,37 @@ public class GameServiceImpl implements GameService{
     }
 
 
-    private int checkWinner(Board board) {
+    private Cell checkWinner(Board board) {
         for (int i = 0; i < 3; i++) {
             if (board.getCell(i, 0) == board.getCell(i, 1)
                     && board.getCell(i, 1) == board.getCell(i, 2)
-                    && board.getCell(i, 0) != EMPTY)
+                    && board.getCell(i, 0) != Cell.EMPTY)
                 return board.getCell(i, 0);
 
             if (board.getCell(0, i) == board.getCell(1, i)
                     && board.getCell(1, i) == board.getCell(2, i)
-                    && board.getCell(0, i) != EMPTY)
+                    && board.getCell(0, i) != Cell.EMPTY)
                 return board.getCell(0, i);
         }
         if (board.getCell(0, 0) == board.getCell(1, 1)
                 && board.getCell(1, 1) == board.getCell(2, 2)
-                && board.getCell(0, 0) != EMPTY)
+                && board.getCell(0, 0) != Cell.EMPTY)
             return board.getCell(0, 0);
 
         if (board.getCell(0, 2) == board.getCell(1, 1)
                 && board.getCell(1, 1) == board.getCell(2, 0)
-                && board.getCell(2, 0) != EMPTY)
+                && board.getCell(2, 0) != Cell.EMPTY)
             return board.getCell(0, 2);
 
-        return EMPTY;
+        return Cell.EMPTY;
     }
 
     private Game updateGameStatus(Game game) {
-        int result = checkWinner(game.getBoard());
-        if (result == PLAYER) {
+        Cell result = checkWinner(game.getBoard());
+        if (result == Cell.X) {
             game.setStatus(GameStatus.WIN);
             game.setWinnerId(game.getPlayerXId());
-        } else if (result == COMPUTER) {
+        } else if (result == Cell.O) {
             game.setStatus(GameStatus.WIN);
             if (game.getPlayerOId() != null) {
                 game.setWinnerId(game.getPlayerOId());

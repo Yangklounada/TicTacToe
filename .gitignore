@@ -4,3 +4,4 @@ ACTIVE_TAG_FILES.txt
 .env
 .idea
 .gradle
+*.iml

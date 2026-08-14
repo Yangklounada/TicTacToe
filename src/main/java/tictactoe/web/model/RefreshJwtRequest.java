@@ -1,6 +1,9 @@
 package tictactoe.web.model;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class RefreshJwtRequest {
+    @NotBlank(message = "refreshToken must not be blank")
     private String refreshToken;
 
     public RefreshJwtRequest() {}

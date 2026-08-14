@@ -1,7 +1,12 @@
 package tictactoe.web.model;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class JwtRequest {
+    @NotBlank(message = "login must not be blank")
     private String login;
+
+    @NotBlank(message = "password must not be blank")
     private String password;
 
     public JwtRequest() {}

@@ -15,7 +15,7 @@ import tictactoe.web.security.JwtUtil;
 import java.util.UUID;
 
 @Service
-public class AuthServiceImpl implements AuthService{
+public class AuthServiceImpl implements AuthService {
 
     private final UserService userService;
     private final JwtProvider jwtProvider;
@@ -49,21 +49,15 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public JwtResponse getAccessToken(String refreshToken) {
-        if (!jwtProvider.validateRefreshToken(refreshToken)) {
-            throw new IllegalArgumentException("Invalid refresh token");
-        }
-        Claims claims = jwtProvider.getRefreshClaims(refreshToken);
-        UUID id = UUID.fromString(claims.get("id", String.class));
-        User user = userService.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
-
-        String accessToken = jwtProvider.generateAccessToken(user);
-        String newRefreshToken = jwtProvider.generateRefreshToken(user);
-        return new JwtResponse(accessToken, newRefreshToken);
+        return rotateRefreshToken(refreshToken);
     }
 
     @Override
     public JwtResponse refreshToken(String refreshToken) {
+        return rotateRefreshToken(refreshToken);
+    }
+
+    private JwtResponse rotateRefreshToken(String refreshToken) {
         if (!jwtProvider.validateRefreshToken(refreshToken)) {
             throw new IllegalArgumentException("Invalid refresh token");
         }

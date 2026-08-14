@@ -1,11 +1,13 @@
 package tictactoe.web.model;
 
+import jakarta.validation.constraints.NotNull;
 import tictactoe.domain.model.GameStatus;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class GameDto {
+    @NotNull(message = "id must not be null")
     private UUID id;
     private BoardDto board;
     private GameStatus status;
