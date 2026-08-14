@@ -1,6 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="57f70827-ddf4-42fb-a255-23c502edc15e" name="Изменения" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.0.0/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.0.0/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.0.0/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postman/globals/workspace.globals.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datasource/mapper/GameMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/mapper/GameMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datasource/model/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/model/BoardEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datasource/model/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/model/GameEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datasource/repository/GameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/repository/GameRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datasource/repository/GameRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/repository/GameRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datasource/repository/GameStore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/di/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/di/SpringConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/service/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/service/GameServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/service/GameServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/mapper/GameMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/mapper/GameMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/model/GameDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/model/GameDto.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleModuleStateConfig" initialized="true">
+    <option name="configPaths">
+      <map>
+        <entry key="$PROJECT_DIR$" value="$PROJECT_DIR$/build.gradle.kts" />
+      </map>
+    </option>
+  </component>
+  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="$USER_HOME$/.gradle/wrapper/dists/gradle-9.0.0-bin/d6wjpkvcgsg3oed0qlfss3wgl/gradle-9.0.0" javaHome="$USER_HOME$/Library/Java/JavaVirtualMachines/axiomjdk-21.0.10" gradleVersion="9.0.0" />
+  <component name="OpenIdeProjectLocalState">
+    <option name="firstOpen" value="false" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="3GSbCgHbehazhUwvTaWl4zFCILv" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yuta/Documents/github/Tic_Tacoe&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Application" type="AmplicodeSpringBootApplication" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="app.Application" />
+      <module name="tictactoe.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Tic_Tacoe" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Tic_Tacoe" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Задача по умолчанию">
+      <changelist id="57f70827-ddf4-42fb-a255-23c502edc15e" name="Изменения" comment="" />
+      <created>1783967791607</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1783967791607</updated>
+    </task>
+    <servers />
   </component>
 </project>

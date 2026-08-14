@@ -1,3 +1,6 @@
 .DS_Store
 build/
 ACTIVE_TAG_FILES.txt
+.env
+.idea
+.gradle
