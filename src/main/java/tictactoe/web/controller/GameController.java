@@ -1,6 +1,7 @@
 package tictactoe.web.controller;
 
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import tictactoe.domain.exception.GameNotFoundException;
 import tictactoe.domain.model.WinsRatio;
 import tictactoe.domain.service.UserService;
@@ -24,6 +25,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/game")
+@SecurityRequirement(name = "bearerAuth")
 public class GameController {
 
     private final GameService gameService;
